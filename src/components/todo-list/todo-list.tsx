@@ -9,7 +9,7 @@ export class TodoList {
   @State() list: string[] = ['Item 1', 'Item 2', 'Item 3'];
   @Element() element: HTMLElement;
 
-  private addNewTask(event: UIEvent): void {
+  private addNewTask(event?: UIEvent): void {
     console.log(event);
     let newTaskInput = this.element.querySelector('#newtask') as HTMLInputElement;
     if (!newTaskInput.value) {
@@ -17,6 +17,15 @@ export class TodoList {
     }
     this.list = this.list.concat([newTaskInput.value]);
     newTaskInput.value = '';
+  }
+
+  private onKeyUp(event: KeyboardEvent): void {
+    console.log(event.which);
+    switch (event.which) {
+      case 13:
+        this.addNewTask();
+        break;
+    }
   }
 
   render() {
@@ -32,7 +41,7 @@ export class TodoList {
         })
       }
     </ul>,
-    <input id="newtask" type="text" placeholder="Type a new a task" />,
+    <input id="newtask" onKeyUp={(event: KeyboardEvent) => { this.onKeyUp(event) }} type="text" placeholder="Type a new a task" />,
     <button onClick={(event: UIEvent) => this.addNewTask(event) }> Add </button>
     ]);
   }
