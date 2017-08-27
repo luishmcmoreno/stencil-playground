@@ -11,7 +11,7 @@ export class TodoList {
 
   render() {
     return (
-      <li>
+      <li class={ this.completed ? 'completed' : 'todo' }>
         <input type="checkbox" checked={ this.completed } />
         {this.title}
       </li>
