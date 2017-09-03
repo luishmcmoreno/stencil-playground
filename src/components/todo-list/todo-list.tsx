@@ -37,7 +37,7 @@ export class TodoList {
     <ul>
       {
         this.list.map((item) => {
-          return <todo-task title={ item } completed="true"></todo-task>
+          return <todo-task title={ item } completed="false"></todo-task>
         })
       }
     </ul>,
