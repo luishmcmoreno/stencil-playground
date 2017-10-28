@@ -12,7 +12,6 @@ export class TodoList {
 
   private applyClass(): void {
     this._completed = !this._completed;
-    console.log(this._completed);
     const li = this.element.querySelector('li');
     if (this._completed) {
       li.classList.add('completed');
@@ -22,7 +21,7 @@ export class TodoList {
   }
 
   componentDidLoad() {
-    this._completed = !this.completed;
+    this._completed = !this._completed;
     this.applyClass();
   }
 
